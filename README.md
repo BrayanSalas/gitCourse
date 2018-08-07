@@ -1,2 +1,2 @@
 ## Git Course
-Git and Github Platzi Course
+Git and Github Platzi Course by Brayan
