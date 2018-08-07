@@ -1,18 +1,18 @@
 # Curso de GitHub comandos básicos y avanzados
 
-## Para inicializar un repositorio se utiliza:
+Para inicializar un repositorio se utiliza:
 ```git init```
 
-##o si no puedes crear una carpeta
+o si no puedes crear una carpeta
 ```git init [carpeta]```
 
-##para remover carpetas se utiliza
+para remover carpetas se utiliza
 ```rm -rf [nombre de la carpeta]```
 
-##borrar un archivo
+borrar un archivo
 ```rm [archivo]```
 
-##para crear archivos en cmd
+para crear archivos en cmd
 ```type nul > archivo.extension```
 
 ejemplo
@@ -26,23 +26,26 @@ o este comando para agregar todo lo de la carpeta
 o
 ```git add -A```
 
-## Ver el status de los archivos que han sido agregados
+Ver el status de los archivos que han sido agregados
 ```git status```
 
-## Quitar un archivo del staging
+Quitar un archivo del staging
 ```git rm --cached [archivo]```
 
-## Para borrar un archivo y ademas quitarlo del staging
+Para borrar un archivo y ademas quitarlo del staging
 ```git rm -f [archivo]```
 
-## Probar que un archivo existe o no en el staging
+Probar que un archivo existe o no en el staging
 ```git add -n [archivo]```
+
 
 # Como hacer commits
 ```git commit -m "[comentario]"```
 
-## commit --amend (Si te falto agregar algo a ese commmit)
+commit --amend (Si te falto agregar algo a ese commmit)
+
 ```git commit --amend```
+
 Esto provocaria que este commit fuera anexado al ultimo commit hecho anteriormente, se abrira la confirmacion y si todo es correcto escribimos...
 
 ```:wq```
@@ -51,16 +54,20 @@ Esto provocaria que este commit fuera anexado al ultimo commit hecho anteriormen
 ```git log```
 
 # Versionar el proyecto
-## Si se requiere etiquetar commits con versiones del proyecto se utiliza:
+Si se requiere etiquetar commits con versiones del proyecto se utiliza:
+
 ```git tag -a [version] -m "[mensaje]"```
 
-## Si se necesita darle version a un commit anterior...
+Si se necesita darle version a un commit anterior...
+
 ```git tag [version] [HASHKEY]```
 
-## Para obtener Hashkey se necesita usar:
+Para obtener Hashkey se necesita usar:
+
 ```git tag -l```
 
-## Para borrar una version
+Para borrar una version
+
 ```git tag -d [version]```
 
 o para renombrarlo
@@ -71,22 +78,28 @@ y luego
 
 ```git tag -d [version equivocada]```
 
-#LOGS
+##LOGS
 ```git log```
-## Ver todo en una linea
+
+Ver todo en una linea
+
 ```git log --oneline```
 
-## Ver todo en una linea y ademas ver un grafico
+Ver todo en una linea y ademas ver un grafico
+
 ```git log --oneline --graph```
 
-## Ver commits (restringir cuantos)
+Ver commits (restringir cuantos)
+
 ```git log -[numero]```
 
-## Ver cambios en lineas de código
+Ver cambios en lineas de código
+
 ```git diff [HASHKEY]```
 Esto provocara que puedas ver los cambios en lineas de codigo de uno a otra version
 
-## Para comparar las versiones en especifico
+Para comparar las versiones en especifico
+
 ```git diff [version1] [version2]```
 
 # GIT RESET
@@ -112,10 +125,12 @@ Tomando de ejemplo el git log del SOFT...
 ```git reset --soft 3c66d3d```
 De esta manera se quitan los cambios a partir de esa hashkey y los archivos se quitan del staging directory
 
-## HARD (Mucho cuidado, se recomienda saber los hashkey o tenerlos guardados en algun lado para si al utilizar este comando de manera erronea, se pueda revertir)
+HARD (Mucho cuidado, se recomienda saber los hashkey o tenerlos guardados en algun lado para si al utilizar este comando de manera erronea, se pueda revertir)
+
 Este comando es muy poderoso a la hora de borrar cosas ya que puedes llegar a borrar no solo los commit, y los archivos de staging sino los archivos del proyecto completo lo que quiere decir que esos archivos no existiran más en tu carpeta.
 
 ## Ejemplo en un add
+
 Supongamos que agregamos todo con git add .
 Luego queremos quitarlos pero utilizamos hard:
 ```git reset --hard```
@@ -123,6 +138,7 @@ Luego queremos quitarlos pero utilizamos hard:
 Lo que pasaria es que perderiamos todo lo que se fue al staging area.
 
 ## Borrar el universo y revertirlo
+
 Usando 
 ```git reset --hard [hashkey]```
 Podemos borrar todos los cambios hasta cierto punto dado, por ejemplo:
@@ -229,12 +245,14 @@ Date:   Mon Aug 6 10:51:14 2018 -0500
     Inicializar nuestro landing
 ```
 ## Creando rama virtual
+De esta manera nosotros podemos acceder a un commit de manera de rama virtual y asi ver el funcionamiento en nuestro navegador
+
 ```git checkout 304aea81a1ba65d3798543fa1a9544980ede6a8f```
 
 ## Creando rama y a la vez accediendo
 ```git branch -b [nombreDeLaRama]```
 
-# Ejemplo para usar Ramas
+## Ejemplo para usar Ramas
 Digamos que tenemos un proyecto donde se esta realizando Responsive Design (rama RD) donde se esta creando todo el CSS y los media queries, y entonces te das cuenta que hay un bug, entonces te vas a la rama principal y creas otra rama con el nombre del error (opcional)
 Recuerda estar en la rama master...
 ```git branch hotfix```
@@ -246,7 +264,7 @@ Ahora se debe de cambiar a la rama RD para resolver el problema de diseño
 Ya solo falta tener la version nueva
 *Se hace la version verde*
 
-# Mezclar cambios (MERGE)
+## Mezclar cambios (MERGE)
 Se realiza un merge del hotfix (se agrego un marco) con la rama master
 ```git merge hotfix```
 En este caso la salida nos presenta que fue un Fast-forward lo que quiere decir que son cambios directos.
@@ -269,7 +287,7 @@ e6c6d7d sumando nuevo hero
 0c873d4 (tag: 0.1) Inicializar nuestro landing
 ```
 
-# Ultimo merge (merge con conflictos)
+## Ultimo merge (merge con conflictos)
 Al realizar el ultimo merge que fue el de nueva-imagen al hacer:
 ```git merge nueva-imagen```
 
@@ -322,10 +340,10 @@ Posteriormente ponle un mensaje, luego escribes :wq para salir. (En caso de que 
 
 Una vez hecho esto la rama principal tendra todos los merge.
 
-# Git rebase
+# Git Rebase
 Es algo parecido a merge pero sin crear bifurcaciones de la historia del proyecto. Se puede usar uno u otro pero se recomienda que solo para uso local el rebase.
 
-# Git STASH
+# Git Stash
 Suponiendo una situacion donde estabamos añadiendo un nuevo feature a RD y derrepente sale un bug del lado del hotfix, podemos guardar el estado temporalmente con: 
 ```git stash```
 Despues de hacer esto ya puedes moverte entre ramas para corregir el error en hotfix.
@@ -343,8 +361,8 @@ uno en especifico seria:
 
 SE UTILIZA CUANDO NO SE ESTA MUY SEGURO DE QUE CAMBIOS HACERLES COMMIT
 
-# Cherry-pick Escogiendo commits
-## *Ejemplo*
+## Cherry-pick Escogiendo commits
+*Ejemplo*
 Se hicieron 2 archivos "nuevos" y se encuentra un problema (hotfix) y sin cambiar de rama arreglamos el problema alli mismo como hotfix2 y hacemos un commit aun en la rama RD pero este deberia estar en una rama hotfix2 por lo cual debio hacer...
 Salir a la rama principal
 ```git checkout master```
@@ -358,7 +376,7 @@ Salir a la rama principal
 ## Luego de hacer esto cambiamos a la rama master denuevo
 ```git checkout master```
 
-## y hacemos un merge
+y hacemos un merge
 ```git merge hotfix2```
 
 luego hipoteticamente continuamos trabajando en la rama RD y se creo un archivo cambio4
@@ -391,7 +409,7 @@ Y se puede ver el grafico de la siguiente manera:
 * e6c6d7d sumando nuevo hero
 
 
-# GITHUB
+# GitHub
 
 ## Crear una SSH key
 ``` ssh-keygen -t rsa -b 4096 -C "email@email.com"```
@@ -451,7 +469,7 @@ WIP: Work in Progress. En que estamos trabajando.
 
 Bugs: Cosas que hay que arreglar de manera prioritaria.
 
-Waiting for review: nos sirve para cuando trabajamos con los pulls requests, ya que se espera que alguien revise nustro codigo.
+Waiting for review: nos sirve para cuando trabajamos con los pulls requests, ya que se espera que alguien revise nuestro codigo.
 
 Done: Cuando la tarea ha finalizado.
 ```
